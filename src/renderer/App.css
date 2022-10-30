@@ -1,0 +1,122 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+body {
+  position: relative;
+  color: white;
+  background: linear-gradient(
+    200.96deg,
+    #fedc2a -29.09%,
+    #dd5789 51.77%,
+    #7a2c9e 129.35%
+  );
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app_errors {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+button {
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  appearance: none;
+  font-size: 1.3rem;
+  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
+    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
+  transition: all ease-in 0.1s;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  height: fit-content;
+  width: fit-content;
+  margin: 10px;
+}
+
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.line-item {
+  display: flex;
+  gap: 0.3em;
+}
+
+.line-item.is-horizontal .line-item__value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-item.is-vertical {
+  flex-direction: column;
+}
+
+.line-item__label {
+  display: flex;
+  font-weight: bold;
+}
+
+.line-item__label::after {
+  content: ':';
+  display: block;
+}
+
+.line-item__value {
+}
+
+.bug-grabber-db {
+  overflow: auto;
+  border: 1px solid #a9b7c6;
+  border-radius: 5px;
+  background: #2b2b2c;
+  color: #a9b7c6;
+  padding: 0.25em;
+  max-height: 10em;
+  position: relative;
+  transition: max-height 0.5s;
+  margin: 0;
+}
+
+.bug-grabber-db.is-expanded {
+  max-height: 100vh;
+}
+
+.error-display {
+  max-width: 90vw;
+  max-height: 90vh;
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #dd5789;
+  border-radius: 5px;
+  background: #46195a;
+}
