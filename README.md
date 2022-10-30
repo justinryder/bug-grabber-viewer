@@ -1,6 +1,6 @@
 # !BugGrabber Viewer
 
-An Electron app viewer for the BugGrabber World of Warcraft addon
+An Electron app viewer for the [BugGrabber](https://www.curseforge.com/wow/addons/bug-grabber) World of Warcraft addon
 
 ![!BugGrabber Viewer App Screenshot](screenshot.png)
 
