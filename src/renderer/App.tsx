@@ -1,7 +1,7 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import React, { FocusEvent, useEffect, useState } from 'react';
-import { sortBy } from 'naan-utils';
+import { sortBy, whereAny } from 'naan-utils';
 
 const { ipcRenderer } = window.electron;
 
@@ -107,6 +107,7 @@ const ErrorDisplay = ({ error }: { error: BugGrabberError }) => (
 
 const Hello = () => {
   const db = useBugGrabberDb<BugGrabberDb>();
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <div className="app">
@@ -117,9 +118,21 @@ const Hello = () => {
           {db.lastSanitation && (
             <LineItem label="Last Sanitization" value={db.lastSanitation} />
           )}
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="Filter"
+          />
           <div className="app__errors">
             {db.errors
               ?.filter(Boolean)
+              ?.filter(
+                whereAny(
+                  (error) => error?.message?.includes(searchTerm) ?? false,
+                  (error) => error?.stack?.includes(searchTerm) ?? false
+                )
+              )
               ?.sort(sortBy((error) => error?.counter))
               ?.reverse()
               ?.map((error, index) => (
